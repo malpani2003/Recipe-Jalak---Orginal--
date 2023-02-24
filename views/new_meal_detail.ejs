@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= meal_details.Food_Name %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/nav.css">
+  <link rel="stylesheet" href="/style/footer.css">
+  <link rel="stylesheet" href="/style/food_detail.css">
+</head>
+
+<body>
+  <%- include("header.ejs") %>
+  <div class="container-fluid">
+    <div class="row movie_detail">
+      
+      <div class="col-md-6">
+        
+
+          <img src="<%=meal_details.Food_Img%>" alt="" class="mx-4 large_image">
+        
+        
+        <div class="grp_image">
+          <img src="<%=meal_details.Food_Img%>" alt="" class="small_image3 perview_img">
+          <img src="<%=meal_details.Preview_Img%>" alt="" class="small_image1 perview_img">
+          <img src="<%=meal_details.Preview_Img%>" alt="" class="small_image2 perview_img">
+        </div>
+       
+        
+      </div>
+      <div class="col-md-6 my-4">
+        <!-- <p></p> -->
+        <h5 class="my-1 mx-1"><a href="/">Home</a> >> <a href="/category/<%= meal_details.Food_Category_ID %>"><%= category %></a></h5>
+        <h1><%= meal_details.Food_Name %></h1>
+        <h5><span>Category </span> -: <%= category %></h5>
+        <h5><span>Preparation Time </span> -: <%= meal_details.ptime%> min</h5>
+        <h5><span>Cooking Time </span> -: <%= meal_details.ctime%> min</h5>
+        <h5><span>Origin of Food </span> -: <%= meal_details.Food_Area%></h5>
+        <h6><span>Difficiulty Level </span> -: <%= meal_details.Difficult%></h6>
+        <a href="/meal/<%=meal_details.Food_id%>/like" class="btn btn-dark">Like <%=(meal_details.Like).length%> </a>
+        <div class="btn btn-outline-dark">Share</div>
+
+        <div class="tages">
+          <!-- <div class="badge bg-warning text-dark">Like</div><div class="badge bg-warning mx-1">Ice Cream</div> -->
+          <!-- <div class="badge bg-warning mx-1">Ice Cream</div> -->
+          
+
+        </div>
+
+        <!-- <div class="badge bg-warning">Drink NO</div> -->
+      
+      </div>
+
+      <% (meal_details.Food_Desc).forEach(element => { %>
+        <p><%=(element).slice(0,1000)%> <button onclick="show_desc()">Read More</button></p>
+        <!-- <p></p> -->
+        <% }); %>
+        
+
+        
+       
+
+        <br>
+        <!-- <a href="<%=meal_details.Food_Img%>" target="_blank" class="btn btn-outline-success my-3 ">Video Link</a> -->
+        <!-- <a href="<%=meal_details.strSource%>" target="_blank" class=" btn btn-success ">Source Link</a> -->
+        <!-- <a href="order/<%=meal_details.Food_id%>" target="_blank" class="btn btn-outline-success ">Order Food</a>
+        <a href="add_to_cart/<%=meal_details.Food_id%>" target="_blank" class="btn btn-outline-success ">Add to Cart</a> -->
+
+      
+
+    </div>
+    
+
+   
+  </div>
+<hr>
+  <div class="instuctions">
+    <h2 class="text-center my-3">Recipe to Cook Food </h2>
+    <h4 class="text-center my-2">Follow this easy <%=meal_details.Food_Name%> Recipe step by step today!</h4>
+    <ol>
+
+      <% ((meal_details.Food_Instruction)).forEach(element => { %>
+      <li type="i"><%=element%> </li>
+      <hr>
+
+      <% }); %>
+    </ol>
+  </div>
+
+  <div class="ingrediants">
+    <h2 class="text-center my-3">Required Ingrediants to Cook Foood </h2>
+    <ol>
+
+      <% ((meal_details.Food_Ingrediants)).forEach(element => { %>
+      <li><%=element%> </li>
+      <!-- <hr> -->
+
+      <% }); %>
+    </ol>
+  </div>
+  <hr>  <div class="similar_category row text-center">
+    <h2>Similar Food Items by Category</h2>
+    <h5>You will also these items</h5>
+
+    <!-- <hr> -->
+    <% similar_item.forEach(element => { %>
+    <div class="col-lg-3  col-md-4 col-sm-6 meal">
+      <img src="<%=element.Food_Img%>" alt="">
+      <h5><%= element.Food_Name%></h5>
+      <a href="/meal/<%=element.Food_id%>" class="btn">Get Recipe</a>
+      <!-- <hr> -->
+    </div>
+
+    <% }); %>
+  </div>
+  
+  <div class="share_info mb-3">
+    <form action="/share_message/<%=meal_details.idMeal%>" method="post">
+      <h3 class="text-center">Please share your valuable message about the <em><%=meal_details.Food_Name%></em></h3>
+      <!-- <p></p> -->
+      <label for="" class="form-label">Email id</label>
+            <input type="email" name="email" id="email" class="form-control" value="<%=user.Email_id%>" readonly>
+            <label for="" class="form-label">Message</label>
+            <textarea name="message" id="message" cols="30" rows="4" class="form-control"></textarea>
+            <input type="submit" value="Share" class="btn btn-success my-3">
+            <input type="reset" value="Cancel" class="btn btn-danger my-3">
+
+    </form>
+  </div>
+  <%- include("footer.ejs") %>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+  $(function () {
+    var perview_img=$(".perview_img");
+    for (let index = 0; index < perview_img.length; index++) {
+            $(`.small_image${index+1}`).click(function(){
+              var image_link=$(`.small_image${index+1}`).attr("src");
+              $(".large_image").attr("src",image_link);
+            })      
+          }
+
+    function show_desc(){
+      alert("HEllo");
+    }
+  });
+</script>

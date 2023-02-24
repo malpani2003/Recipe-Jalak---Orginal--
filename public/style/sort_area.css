@@ -1,0 +1,39 @@
+.Category{
+    text-align: center;
+    border: 1px solid black;
+    margin: auto;
+    /* background-color: rgb(34, 34, 34); */
+    margin-top: 20px;
+    color: white;
+    border-radius: 10px;
+    margin-left: 50px;
+    /* padding: 3px; */
+    /* transition: 1s ease; */
+
+}
+.Category h2{
+    color: black;
+}
+@media(max-width:768px) {
+    .Category{
+        max-width: 80%;
+        margin: auto;
+    margin-top: 20px;
+        
+    }
+    
+}
+.row a.Category{
+    text-decoration: none;
+    color: white;
+}
+.row a:hover{
+    color: white;
+}
+.Category p{
+    display: none;
+}
+.Category img{
+    width: 20%;
+    margin-top: 20px;
+}

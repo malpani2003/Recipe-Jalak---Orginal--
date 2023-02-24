@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Jhalak</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/nav.css">
+  <link rel="stylesheet" href="/style/footer.css">
+  <link rel="stylesheet" href="/style/index.css">
+  <style>
+    /* .faq{
+      width:80%;
+      margin: auto;
+      text-align: center;
+      display: block;
+    } */
+        .faq h4{
+            /* background-color:navy;
+             */
+            padding: 10px;
+            color: rgb(0, 0, 0);
+            background-color: gold;
+
+            /* border-bottom: 3px solid black; */
+        }
+        .faq p{
+            /* background-color: gold; */
+            padding: 20px;
+            /* display: none; */
+        }
+        .faq img{
+          width: 35%;
+          margin: auto;
+          display: block;
+        }
+        .box form{
+          width: 60%;
+          margin: auto;
+          display: block;
+        }
+  </style>
+</head>
+
+<body>
+
+  <div class="background Header_page">
+  <%- include("header.ejs") %>
+
+    <div class="box">
+      <img src="../public/img/logo.png" alt="">
+      <h1>Here Is The Best Recipe</h1>
+      <p>On Recipe Jhalak, you may find and share culinary ideas for everyday meals. Find new recipes, culinary tutorials, and how-to guides depending on the kind of foods you enjoy eating, their categories, and their ingredients.</p>
+      <!-- <p>Developed By Pranav Malpani</p> -->
+      <!-- <a href="/" class="btn btn-outline-dark">Explore Recipe</a> -->
+      <form class="d-flex " method="post" action="/search_item">
+        <input class="form-control me-2" type="search" name="fsearch" placeholder="Enter Food Title" aria-label="Search">
+        <!-- <button class="btn btn-dark" type="submit">Search</button> -->
+      </form>
+    </div>
+  </div>
+  <div class="container">
+
+    <div class="popular text-center my-4">
+      <h2>Recipe of the Day </h2>
+      <h5>We offer you a selection of delicious recipes from well-known chefs.</h5>
+      <p>Click on Image to get Recipe</p>
+      <!-- <a href="/meal/<%=random.Category_Id%>"><img src="<%=random.Category_Img%>" alt=""></a> -->
+      <!-- <a href="/random-recipe" class="btn btn-outline-dark">Click to Get Random Recipe</a> -->
+
+    </div>
+    <hr>
+
+
+    <h1 class="text-center my-4" id="category">Browse Recipe By Category</h1>
+    <a href="/Category_add">Add Category</a>
+    <h5 class="text-center fw-bold">Choose your favourite category and take a look at the food products by visiting the list of the Top Food Items.</h5>
+    <h4 class="text-center"> Total <%= list.length %> Categories</h4>
+
+    <div class="row">
+
+      <% list.forEach(element => { %>
+      <a href="category/<%=element.Category_Id%>" class="col-lg-3  col-md-4 col-sm-6  Category">
+        <img src="<%=element.Category_Img%>" alt="">
+        <h3><%= element.Category_Name%></h3>
+
+      </a>
+
+      <% }); %>
+    </div>
+  </div>
+
+  <!-- <div class="team my-3">
+    <h1>Our Team</h1>
+    <h5 class="fw-bold w-75 text-center">These are members of our team who work around the clock to provide you with the greatest service and recipes that you find more interesting.</h5>
+    <div class="row">
+      <div class="col-lg-3  col-md-3 col-sm-4 ">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="">
+        <h6>Lorem, ipsum dolor.</h6>
+      
+      </div>
+      <div class="col-lg-3  col-md-3 col-sm-4 ">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="">
+        <h6>Lorem, ipsum dolor.</h6>
+
+        
+      </div>
+      <div class="col-lg-3  col-md-3 col-sm-4 ">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="">
+        <h6>Lorem, ipsum dolor.</h6>
+
+    
+      </div>
+      <div class="col-lg-3  col-md-3 col-sm-4 ">
+        <img src="https://cdn-icons-png.flaticon.com/512/219/219983.png" alt="">
+        <h6>Lorem, ipsum dolor.</h6>
+
+      
+      </div>
+
+    </div>
+  </div> -->
+  <div id="myModal" class="modal fade">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <!-- <div class="col-md-4"> -->
+
+        <!-- </div> -->
+        <!-- <div class="col-md-7"> -->
+
+
+        <div class="modal-header">
+          <h3 class="modal-title">Subscribe our Newsletter</h>
+            <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        </div>
+        <div class="modal-body row">
+          <div class="col-md-7">
+            <img src="https://img.freepik.com/free-vector/spaghetti-pasta-production-industry-online-service-platform-italian-semiprocessed-food-manufacturing-website-isolated-vector-illustration_613284-1280.jpg?w=740&t=st=1669623139~exp=1669623739~hmac=9085695becc95b8d106cf44149a192ae97ac878094aa421c50470aa2562466ba" alt="">
+
+          </div>
+          <div class="col-md-5">
+
+            <p>Subscribe to our mailing list to get the latest updates straight in your inbox.</p>
+            <form>
+              <!-- <div class="form-group">
+                              <input type="text" class="form-control" placeholder="Name">
+                          </div> -->
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email Address">
+              </div>
+              <button type="submit" class="btn btn-primary my-3">Subscribe</button>
+            </form>
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="newsletter">
+
+    <h3>Donot Miss any Update from Us</h3>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus quasi illum explicabo facere, laudantium sit nemo esse id ullam! Esse asperiores illum eaque voluptates rem molestiae praesentium quisquam corrupti molestias.</p>
+    <form class="d-flex mx-5" action="/search_item" method="post">
+      <input class="form-control me-2 mx-5" type="email" name="email" placeholder="Enter Email Id" aria-label="Search">
+      <button class="btn btn-success" type="submit">Subscribe</button>
+    </form>
+
+  </div> -->
+  <h2 class="text-center p-3 my-3 mb-2">Frequently Asked Question ?</h2>
+  <p class="text-center fs-4 w-75 mb-2 m-auto">Have a question? Read through our FAQ below. If you can't find an answer,
+    please email our support team. We're here to help.</p>
+  <div class="faq row mb-5 w-75 m-auto">
+    <!-- <img src="https://img.freepik.com/free-vector/faqs-concept-illustration_114360-5245.jpg?w=2000" alt=""> -->
+
+    <div class="mx-2">
+    <h4 class="heading1"> >> Where Can I Find a Recipe? <span class="cancel1">X</span></h4>
+    <p class="para1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus temporibus quasi eaque doloremque enim nemo possimus modi quibusdam minima laborum debitis velit, aspernatur eveniet sit deserunt, a officiis. Ut autem maiores sunt enim facilis non magnam, et ex nam illum quam, quia dolor dolorum necessitatibus aspernatur exercitationem possimus nostrum ipsa iste tempora dolorem debitis. Quaerat iusto molestias nemo soluta error dolorem incidunt, perferendis amet odit vel. Quidem facere exercitationem culpa minus impedit quam eaque et mollitia maxime placeat? Voluptatem, quidem dolorum, odio dolorem optio accusamus atque inventore quaerat nisi repellat assumenda est ipsa distinctio quibusdam unde molestias. Porro, id tempora.</p>
+
+    <h4 class="heading2"> >> Is there a membership or subscription required to view the recipe?</h4>
+    <p class="para2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus temporibus quasi eaque doloremque enim nemo possimus modi quibusdam minima laborum debitis velit, aspernatur eveniet sit deserunt, a officiis. Ut autem maiores sunt enim facilis non magnam, et ex nam illum quam, quia dolor dolorum necessitatibus aspernatur exercitationem possimus nostrum ipsa iste tempora dolorem debitis. Quaerat iusto molestias nemo soluta error dolorem incidunt, perferendis amet odit vel. Quidem facere exercitationem culpa minus impedit quam eaque et mollitia maxime placeat? Voluptatem, quidem dolorum, odio dolorem optio accusamus atque inventore quaerat nisi repellat assumenda est ipsa distinctio quibusdam unde molestias. Porro, id tempora.</p>
+    
+    
+    <h4 class="heading3"> >> Can I, as a User, submit any Recipe? </h4>
+    <p class="para3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus temporibus quasi eaque doloremque enim nemo possimus modi quibusdam minima laborum debitis velit, aspernatur eveniet sit deserunt, a officiis. Ut autem maiores sunt enim facilis non magnam, et ex nam illum quam, quia dolor dolorum necessitatibus aspernatur exercitationem possimus nostrum ipsa iste tempora dolorem debitis. Quaerat iusto molestias nemo soluta error dolorem incidunt, perferendis amet odit vel. Quidem facere exercitationem culpa minus impedit quam eaque et mollitia maxime placeat? Voluptatem, quidem dolorum, odio dolorem optio accusamus atque inventore quaerat nisi repellat assumenda est ipsa distinctio quibusdam unde molestias. Porro, id tempora.</p>
+
+    <h4 class="heading4"> >> Is there a cooking video with a recipe available?</h4>
+    <p class="para4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus temporibus quasi eaque doloremque enim nemo possimus modi quibusdam minima laborum debitis velit, aspernatur eveniet sit deserunt, a officiis. Ut autem maiores sunt enim facilis non magnam, et ex nam illum quam, quia dolor dolorum necessitatibus aspernatur exercitationem possimus nostrum ipsa iste tempora dolorem debitis. Quaerat iusto molestias nemo soluta error dolorem incidunt, perferendis amet odit vel. Quidem facere exercitationem culpa minus impedit quam eaque et mollitia maxime placeat? Voluptatem, quidem dolorum, odio dolorem optio accusamus atque inventore quaerat nisi repellat assumenda est ipsa distinctio quibusdam unde molestias. Porro, id tempora.</p>
+
+  </div>
+    <!-- <div class="col-md-4">
+    </div> -->
+  </div>
+
+  <!-- <form action="/filter_letter" method="get" class="filter_letter my-1">
+    <h5>Search by First Alphabate</h5>
+    <input type="submit" value="a" name="letter">/
+    <input type="submit" value="b" name="letter">/
+    <input type="submit" value="c" name="letter">/
+    <input type="submit" value="d" name="letter">/
+    <input type="submit" value="e" name="letter">/
+    <input type="submit" value="f" name="letter">/
+    <input type="submit" value="g" name="letter">/
+    <input type="submit" value="h" name="letter">/
+    <input type="submit" value="i" name="letter">/
+    <input type="submit" value="j" name="letter">/
+    <input type="submit" value="k" name="letter">/
+    <input type="submit" value="l" name="letter">/
+    <input type="submit" value="m" name="letter">/
+    <input type="submit" value="n" name="letter">/
+    <input type="submit" value="o" name="letter">/
+    <input type="submit" value="p" name="letter">/
+    <input type="submit" value="q" name="letter">/
+    <input type="submit" value="r" name="letter">/
+    <input type="submit" value="s" name="letter">/
+    <input type="submit" value="t" name="letter">/
+    <input type="submit" value="u" name="letter">/
+    <input type="submit" value="v" name="letter">/
+    <input type="submit" value="w" name="letter">/
+    <input type="submit" value="x" name="letter">/
+    <input type="submit" value="y" name="letter">/
+    <input type="submit" value="z" name="letter">
+
+
+
+  </form> -->
+  <%- include("footer.ejs") %>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+  var Len = ($(".faq h4")).length;
+  console.log(Len);
+  let OpenFaq=0;
+  for (let index = 0; index < Len; index++) {
+    $(`.heading${index+1}`).click(function() {
+        $(`.para${index+1}`).slideToggle(900);
+        $(`.cancel${index+1}`).toggle();
+        let selectindex=index;
+        for(let j=0;j<Len;j++){
+          if(j!=selectindex){
+            $(`.para${j+1}`).hide(900);
+            $(`.cancel${j+1}`).hide();
+   
+            
+          }   
+        }  
+    })
+  }
+  $(function() {
+    $(".faq p").hide();
+    $(".faq span").hide();
+    // setInterval(function(){
+    //   // $(".Header_page").animate()
+    //    $(".Header_page").toggleClass("background background1");
+    //   //  $(".Header_page").toggleClass("background1");
+
+    // },3000)
+  })
+</script>
+
+</html>

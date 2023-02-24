@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/nav.css">
+  <link rel="stylesheet" href="/style/footer.css">
+  <style>
+    .user_card li {
+      margin-top: 20px;
+      list-style: none;
+      font-weight: bold;
+    }
+
+    .user_card img {
+      width: 40%;
+      margin: auto;
+      display: block;
+      margin-top: 10px;
+    }
+
+    .user_card {
+      background-color: gainsboro;
+
+    }
+
+    .user_card h3 {
+      background-color: black;
+      color: white;
+    }
+    .details div{
+      background-color: gainsboro;
+      padding: 10px;
+      text-align: center;
+      border-radius: 10px;
+      margin: auto;
+      display: block;
+      margin-left: 40px;
+      margin-top: 10px;
+      /* width: 50%; */
+
+
+    }
+    .user_card li a{
+      text-decoration: none;
+
+    }
+    .badge{
+      margin: auto;
+      display: block;
+      width: 60%;
+      padding: 10px;
+      font-size: large;
+    }
+  </style>
+</head>
+
+<body>
+  <%- include("header.ejs") %>
+
+  <div class="container-fluid">
+    <div class="row bg-warning">
+      <h1 class="text-center my-1 p-3">User Profile</h1>
+    </div>
+    <% list.forEach(element => {%>
+    <div class="row ">
+      <div class="col-md-3 p-2 user_card mx-3 my-3">
+        <img src="https://pluspng.com/img-png/png-user-icon-circled-user-icon-2240.png" alt="">
+
+        <h3 class="p-2 my-2 text-center"><%= element.Name %> </h3>
+        <%  if(element.Verified){ %>
+          <div class="badge bg-success my-2">Verified User</div>
+
+       <% } else{%>
+        <div class="badge bg-danger my-2">Not Verified</div>
+        
+        
+        
+        <%} %> 
+        <!-- <h5><%= element.Email_id %> </h5> -->
+        
+        
+        <ul class="my-3">
+          <li> <a href="">About Me</a></li>
+          <li><a href="">Liked Recipe</a></li>
+          <li><a href="">Update Profile</a></li>
+
+          <%  if(!element.Verified){ %>
+            <!-- <div class="badge bg-success my-2">Verified User</div> -->
+            <li> <a href="/otp_verification/<%=element._id%>">Verify Now</a></li>
+  
+         <% } %>
+
+        </ul>
+
+      </div>
+      <div class="col-md-8 p-3 mx-md-1">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta inventore atque odio. Omnis adipisci aut qui modi, distinctio quas sed odio et pariatur dolorem a quis nostrum suscipit? Molestias reprehenderit, dolore quam quo animi natus, commodi et unde saepe porro enim nam corporis nihil fugit error deleniti doloremque dolor, repellat obcaecati libero aspernatur mollectus facilis reprehenderit tempore possimus nulla perspiciatis nobis a consequuntur adipisci inventore quisquam dolore natus, ipsum expedita blanditiis!
+        <div class="details row my-3">
+            <div class="col-md-3 ">
+                <h5>Last Active</h5>
+                <p><%=element.LastActive %> </p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Liked Recipe</h5>
+                <p><%=element.LikedRecipe.length %></p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Total Comments</h5>
+                <p><%=element.TotalComments %></p>
+            </div>
+
+        </div>
+      </div>
+      <!-- <div class="col-md-3 bg-warning text-dark Menu">
+            <ul>
+                <li>About</li>
+                <li>Liked Recipe</li>
+                <li>Comments on Recipe</li>
+                
+            </ul>
+        </div> -->
+    </div>
+    <% });%>
+  </div>
+  <%- include("footer.ejs") %>
+</body>
+
+</html>

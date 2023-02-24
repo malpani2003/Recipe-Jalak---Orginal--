@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= meal_details.strMeal %></title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/nav.css">
+  <link rel="stylesheet" href="/style/footer.css">
+  <link rel="stylesheet" href="/style/food_detail.css">
+</head>
+
+<body>
+  <%- include("header.ejs") %>
+  <div class="container-fluid">
+    <div class="row movie_detail">
+      <div class="col-md-5">
+        <img src="<%=meal_details.strMealThumb%>" alt="">
+
+      </div>
+      <div class="col-md-7 my-4">
+        <!-- <p></p> -->
+        <h6>Site Map -:&nbsp;&nbsp;&nbsp;<a href="/">Home</a> / <a href="/category/<%= meal_details.strCategory %>"> Category <%= meal_details.strCategory %></a></h6>
+        <h1><%= meal_details.strMeal %></h1>
+        <h5><span>Category </span> -: <%= meal_details.strCategory %></h5>
+        <h5><span>Area </span> -: <%= meal_details.strArea %></h5>
+        <h5> <span> Tags </span> -: <%= ((meal_details.strTags))%> </h5>
+
+        <br>
+        <a href="<%=meal_details.strYoutube%>" target="_blank" class="btn btn-outline-success ">Video Link</a>
+        <!-- <a href="<%=meal_details.strSource%>" target="_blank" class=" btn btn-success ">Source Link</a> -->
+        <a href="order/<%=meal_details.idMeal%>" target="_blank" class="btn btn-outline-success ">Order Food</a>
+        <a href="add_to_cart/<%=meal_details.idMeal%>" target="_blank" class="btn btn-outline-success ">Add to Cart</a>
+
+      </div>
+    </div>
+    <div class="instuctions">
+      <h2 class="text-center">Recipe to Cook Food </h2>
+      <ol>
+
+        <% ((meal_details.strInstructions).split(".")).forEach(element => { %>
+        <li><%=element%> </li>
+
+        <% }); %>
+      </ol>
+    </div>
+
+    <div class="ingredient">
+      <h2 class="text-center">Ingredient Required </h2>
+
+      <table class="table">
+        <tr>
+          <th>S.No</th>
+          <th>Image</th>
+          <th>Ingrediants</th>
+          <th>Quantity</th>
+        </tr>
+
+        <% count=0 %>
+        <% ingrediant_list.forEach(element => { %>
+
+        <% if(element.Name!="" || element.Name!=" "|| element.Measure!=" "||element.Measure!="" ){ %>
+        <% count++ %>
+        <tr>
+          <% let url=`https://www.themealdb.com/images/ingredients/${element.Name}.png`%>
+          <td><%=count%></td>
+          <td><img src=<%=url%> alt="<%=element.Name%> Photo" id="zoom"></td>
+          <td><%=element.Name%></td>
+          <td><%=element.Measure%></td>
+        </tr>
+        <%}else{%>
+         <% pass;%>
+        <%} %>
+        <% }); %>
+      </table>
+    </div>
+  </div>
+  <div class="similar_category row">
+    <h2 class="text-center">Similar Food Items by Category</h2>
+    <h5>You will also these items</h5>
+    <!-- <hr> -->
+    <% similar_item.forEach(element => { %>
+    <div class="col-lg-3  col-md-4 col-sm-6 meal">
+      <img src="<%=element.strMealThumb%>" alt="">
+      <h5><%= element.strMeal%></h5>
+      <a href="/meal/<%=element.idMeal%>" class="btn">Get Recipe</a>
+      <!-- <hr> -->
+    </div>
+
+    <% }); %>
+  </div>
+
+  <div class="share_info">
+    <form action="/share_message/<%=meal_details.idMeal%>" method="post">
+      <h3 class="text-center">Please share your valuable message about the <em><%=meal_details.strMeal%></em> Recipe</h3>
+      <!-- <p></p> -->
+      <label for="" class="form-label">Email id</label>
+            <input type="email" name="email" id="email" class="form-control">
+            <label for="" class="form-label">Message</label>
+            <textarea name="message" id="message" cols="30" rows="4" class="form-control"></textarea>
+            <input type="submit" value="Share" class="btn btn-success my-3">
+            <input type="reset" value="Cancel" class="btn btn-danger my-3">
+
+    </form>
+  </div>
+  <%- include("footer.ejs") %>
+</body>
+
+</html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+  // $(function () {
+  //       console.log("hello");
+  //       $("#zoom").imagezoomsl({
+  //         zoomrange: [4, 4],
+  //       });
+  //     });
+</script>

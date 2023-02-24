@@ -1,0 +1,19 @@
+body{
+    text-align: center;
+}
+img{
+    width:25%;
+    margin: auto;
+}
+
+h1{
+    font-size: 300%;
+}
+@media(max-width:800px) {
+    img{
+        width: 100%;
+    }
+}
+footer{
+    text-align: left;
+}

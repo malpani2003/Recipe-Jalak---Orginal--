@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Jhalak</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/style/nav.css">
+  <link rel="stylesheet" href="/style/footer.css">
+  <link rel="stylesheet" href="/style/index.css">
+ 
+</head>
+
+<body>
+
+    <%- include("header.ejs") %>
+  
+  <div class="container">
+  <h1 class="text-center my-3">Add Categories</h1>
+  <h5>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore doloribus magnam rerum est deleniti, vero possimus eligendi illum dicta ipsam. Quos a recusandae ullam, quae aliquam facilis illum rerum molestias quo officiis excepturi maiores nam minima animi consequuntur ipsum assumenda quis error! Excepturi modi minima aut error non atque id?</h5>
+  <form action="/Category_add" method="post" class="contact_form">
+
+    <div class="row">
+      <div class="col-md-6">
+        <label for="Category_nm" class="form-label my-2">Name of Food Category</label>
+        <input type="text" name="Category_nm" id="Category_nm" class="form-control">
+    
+      </div>
+      <div class="col-md-6">
+        <label for="Category_img" class="form-label my-2">Thumbnail image of Food Category</label>
+        <input type="url" name="Category_img" id="Category_img" class="form-control">
+      </div>
+    </div>
+   
+    
+
+    <label for="Categorgy_desc" class="form-label my-3">Description about Category</label>
+    <textarea name="Categorgy_desc" id="Categorgy_desc" cols="30" rows="8" class="form-control"></textarea>
+
+    <!-- <input type="submit" value="Send Message" class="btn btn-success my-3"> -->
+    <input type="submit" value="Add Category" class="btn btn-outline-success my-3">
+
+</form>
+   
+    </div>
+
+     <%- include("footer.ejs") %>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+  // $(document).ready(function() {
+  //   $("#myModal").modal('show');
+  // });
+</script>
+
+</html>

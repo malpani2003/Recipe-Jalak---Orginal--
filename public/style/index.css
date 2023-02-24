@@ -1,0 +1,212 @@
+.background {
+    background: url("../img/826939.webp");
+    /* background: linear-gradient(145deg,rgba(207, 243, 177, 0.5), rgba(243, 237, 155, 0.5)),url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpFtTUmWA6t67MMBH1B377zAy7x8tvCvmMiA&usqp=CAU); */
+    
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    /* background-image: url("../img/826939.webp"); */
+    /* background-image: url("https://img.freepik.com/free-vector/chef-concept-illustration_114360-1894.jpg?w=740&t=st=1669622964~exp=1669623564~hmac=61faecb193b3f24adf8b24591fd7061e69a6b071fd327e26253f7e92ca235db1"); */
+
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position:center; */
+    min-height: 100vh;
+    /* padding: 200px; */
+    padding-top: 0px;
+    border-bottom: 1px solid black;
+}
+.background{
+    /* background:url("https://img.freepik.com/free-vector/chef-concept-illustration_114360-1894.jpg?w=740&t=st=1669622964~exp=1669623564~hmac=61faecb193b3f24adf8b24591fd7061e69a6b071fd327e26253f7e92ca235db1"); */
+    background:url(https://thumbs.dreamstime.com/b/people-eating-healthy-meals-wooden-table-top-view-food-delivery-people-eating-healthy-meals-wooden-table-food-delivery-160387494.jpg);
+    
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    /* background-image: url("../img/826939.webp"); */
+    /* background-image: url("https://img.freepik.com/free-vector/chef-concept-illustration_114360-1894.jpg?w=740&t=st=1669622964~exp=1669623564~hmac=61faecb193b3f24adf8b24591fd7061e69a6b071fd327e26253f7e92ca235db1"); */
+
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position:center; */
+    min-height: 100vh;
+    /* padding: 200px; */
+    padding-top: 0px;
+    border-bottom: 1px solid black;
+    /* transition:3s ease-in; */
+}
+.box {
+    text-align: center;
+    padding: 20px;
+    color: white;
+    /* background-color: white; */
+    width: 70%;
+    margin: auto;
+    /* text-shadow: 1px 1px 1px black; */
+    font-weight: bolder;
+    /* font-size: larger; */
+    margin-top: 130px;
+    backdrop-filter: blur(70px) saturate(131%);
+    -webkit-backdrop-filter: blur(22px) saturate(131%);
+    background-color: rgba(43, 42, 42, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+
+}
+
+
+.Category img {
+    width: 60%;
+    height:15vh;
+    margin-top: 20px;
+    border-radius: 100%;
+}
+
+@media(max-width:768px) {
+    .Category {
+        max-width: 80%;
+        margin: auto;
+        margin-top: 20px;
+
+    }
+    .box {
+        width: 90%;
+        text-align: center;
+        margin: auto;
+        margin-top: 100px;
+
+    }
+
+
+}
+
+@media(max-width:589px) {
+    .box {
+        width: 90%;
+        text-align: center;
+        margin: auto;
+        margin-top: 100px;
+
+    }
+
+}
+/* 
+@media(max-width:350px) {
+    .box {
+        width: 98%;
+    }
+
+} */
+
+.row a {
+    text-decoration: none;
+    color: white;
+}
+
+.row a:hover {
+    color: white;
+}
+
+.newsletter {
+    background-color: antiquewhite;
+    /* border-radius: 10px; */
+    /* border: 2px solid black; */
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-top: 80px;
+    filter: drop-shadow(3px 3px 3px black);
+    margin-bottom: 20px;
+
+}
+
+.newsletter h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="email"] {
+    border: 2px solid black;
+    /* margin-bottom: 20px; */
+
+}
+
+input[type="submit"] {
+    background-color: white;
+    border: none;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.Category {
+    text-align: center;
+    border: 1px solid black;
+    margin: auto;
+    /* background-color: rgb(34, 34, 34); */
+    margin-top: 20px;
+    color: rgb(0, 0, 0);
+    border-radius: 10px;
+    margin-left: 50px;
+    /* transition: 1s ease; */
+
+}
+.Category h3{
+    color: black;
+}
+.filter_letter {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.popular img {
+    width: 25%;
+    border-radius: 100%;
+    border: 2px solid black;
+}
+
+.team h5{
+    margin: auto;
+    width: 80%;
+}
+
+.team {
+    text-align: center;
+}
+.team h6{
+    margin-top: 10px;
+}
+.team img {
+    width: 30%;
+    margin: auto;
+    display: block;
+    margin-top: 20px;
+}
+
+@media(max-width:600px) {
+    .team img {
+        width: 30%
+    }
+
+    .popular img {
+        width: 50%
+    }
+}
+.modal-content{
+    border-radius: 10px;
+    /* background-color: bisque; */
+}
+.modal-body img {
+    width: 100%;
+    margin: 0%;
+    display: block;
+}
+@media(max-width:700px) {
+    .modal-content{
+        width: 85%;
+        margin: auto;
+        display: block;
+    }
+    
+}
